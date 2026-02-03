@@ -1,5 +1,7 @@
 import { io, exec, plugin } from "@shevky/base";
 
+const PLUGIN_NAME = "shevky-esbuild";
+const PLUGIN_VERSION = "0.0.2";
 const PLUGIN_ROOT = import.meta.dirname ?? process.cwd();
 
 /** @type {import("@shevky/base").PluginHooks} */
@@ -11,7 +13,7 @@ const hooks = {
 
     if (!(await ctx.file.exists(sourePath))) {
       ctx.log.err(
-        `Skipping JS bundling because the source file is missing at ${sourePath}.`,
+        `[${PLUGIN_NAME}] Skipping JS bundling because the source file is missing at ${sourePath}.`,
       );
       return;
     }
@@ -34,14 +36,9 @@ const hooks = {
     }
 
     await exec.executeNpx(args, PLUGIN_ROOT);
-    ctx.log.debug("ESBuild has been completed.");
+    ctx.log.debug(`[${PLUGIN_NAME}] ESBuild has been completed.`);
   },
 };
 
-const PLUGIN = {
-  name: "shevky-esbuild",
-  version: "0.0.1",
-  hooks,
-};
-
+const PLUGIN = { name: PLUGIN_NAME, version: PLUGIN_VERSION, hooks };
 export default PLUGIN;

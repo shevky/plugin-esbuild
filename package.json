@@ -1,6 +1,6 @@
 {
     "name": "@shevky/plugin-esbuild",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Shevky plugin that runs esbuild during builds.",
     "type": "module",
     "main": "main.js",
@@ -35,7 +35,7 @@
         "access": "public"
     },
     "dependencies": {
-        "@shevky/base": "^0.0.1",
+        "@shevky/base": "^0.0.2",
         "esbuild": "^0.27.2"
     }
 }
